@@ -30,7 +30,7 @@ describe 'Мини-ЕТИ' do
       end
     end
 
-    context 'когда загружается изображение' do
+    fcontext 'dfgdffdgdfgкогда загружается изображение' do
       before(:all) do
         @name = Faker::Number.number(digits: 5).to_s
         @cs_eti_table_products.add_product(name: @name)

@@ -87,6 +87,9 @@ module CompanySite
     button(:load_file, xpath: '//div[@class="document-loader__block"]/../..//input[@type="file"]')
     elements(:docs, css: '.documents__reorder-block .document-block')
 
+    # Блок Маркетинговых меток
+    checkbox(:marketing_label_checkbox, css: '[for="marketing-labels-0"]')
+
     # Блок Сопутствующие товары
     text_area(:soputka_input, css: '.related-products__search .aui-admin-search__input')
     button(:soputka_find_button, css: '.related-products__search .aui-admin-search__button')
@@ -94,6 +97,9 @@ module CompanySite
 
     # Минимальный размер заказа (только для ПЦ)
     text_area(:min_qty_input, css: '.min-quantity .aui-admin-number-input__field')
+
+    # Примечание
+    text_area(:user_note, xpath: '//div[@class="user-note__textarea"]//textarea')
 
     # Кнопка сохранения
     button(:save, css: '.aui-admin-button_submit')
@@ -134,13 +140,14 @@ module CompanySite
       fill_description_block(options)
       fill_rubric_block(options)
       fill_traits_block(options)
+      fill_marketing_label(options)
 
       load_image(options) if options[:path_to_image]
       fill_group(options) if options[:group]
       load_doc(options) if options[:path_to_doc]
       fill_soputka(options) if options[:soputka]
       self.min_qty_input = options[:min_qty] if options[:min_qty]
-
+      fill_user_note(options) if options[:user_note]
       save
     end
 
@@ -286,6 +293,11 @@ module CompanySite
       groups_tree_elements.find { |group| group.text.strip == name_group }.click
     end
 
+    # Выбор маркетинговых меток
+    def fill_marketing_label(options)
+      check_marketing_label_checkbox if options[:marketing_label]
+    end
+
     # Загрузка заданных документов
     def load_doc(options)
       options[:qty_of_doc].times do
@@ -303,6 +315,11 @@ module CompanySite
         add_in_soputka_button
         sleep 1
       end
+    end
+
+    # Заполнение Примечания
+    def fill_user_note(options)
+      self.user_note = options[:user_note] if options[:user_note]
     end
 
     # Очистка ТОЛЬКО текстовых строк

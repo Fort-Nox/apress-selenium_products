@@ -34,7 +34,7 @@ describe 'Новая форма создания товара', feature: 'Соз
       end
     end
 
-    context 'когда все поля заполнены максимальными значениями' do
+    fcontext 'dfsfsdf когда все поля заполнены максимальными значениями' do
       before(:all) do
         @options = {
           name: Faker::Lorem.paragraph_by_chars(number: 120),
@@ -65,10 +65,12 @@ describe 'Новая форма создания товара', feature: 'Соз
           qty_of_images: 4, # на самом деле будет загружено 10 изображений
           description_of_photo: Faker::Lorem.paragraph_by_chars(number: 255),
           group: CONFIG['product_creation']['group'],
+          marketing_label: true,
           path_to_doc: IMAGE_PATH,
           qty_of_doc: 3, # на самом деле будет загружено 5 документов - это максимум
           soputka: CONFIG['product_creation']['soputka'],
-          qty_of_soputka: 4
+          qty_of_soputka: 4,
+          user_note: Faker::Lorem.paragraph_by_chars(number: 1000)
         }
 
         # На БЛ нет этого поля, только на ПЦ
@@ -128,6 +130,14 @@ describe 'Новая форма создания товара', feature: 'Соз
 
       it 'товары Сопутки выводятся в количестве 4' do
         expect(@product_page.product_soputka_elements.size).to eq 4
+      end
+
+      it 'Маркетинговая метка есть' do
+        expect(@product_page.marketing_labels).to eq 'новинка'
+      end
+
+      it 'Примечание заполнено' do
+        expect(@product_page.user_note).to eq(@options[:user_note])
       end
     end
   end
@@ -632,4 +642,11 @@ describe 'Новая форма создания товара', feature: 'Соз
       end
     end
   end
+
+  describe 'Создание кастомной метки на товар' do
+    before do
+      
+    end
+  end
+
 end

@@ -7,9 +7,10 @@ module CompanySite
 
       button(:undo_button, css: '.js-undo')
       button(:redo_button, css: '.js-redo')
+      # Товары
       button(:products, css: '.js-eti-action-panel__button_products')
-      button(:add_to_deal, css: '.js-deals-config')
-
+      button(:add_to_deal, css: '.eti-action-panel__dropdown_open .js-deals-config')
+      button(:products_groups_main, css: '.eti-action-panel__dropdown_open .js-storefront-config')
 
       def undo
         undo_button
@@ -24,6 +25,11 @@ module CompanySite
       def open_deals_popup
         products
         add_to_deal
+      end
+
+      def open_products_groups_main
+        products
+        products_groups_main
       end
 
       ActiveSupport.run_load_hooks(:'apress/selenium_eti/company_site/eti/action_panel', self)

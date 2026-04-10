@@ -28,6 +28,9 @@ module CompanySite
         elements(:traits_link, :cell, css: '.js-eti-traits > div')
         elements(:descriptions, :cell, css: '.js-eti-description')
         elements(:groups, :cell, css: '.js-group-preview-link')
+        elements(:product_main, :cell, css: '.js-eti-storefront')
+
+        elements(:product_main_icon, css: '.js-eti-link-storefront')
 
         # Окно редактирования краткого описания
         div(:edit_box, css: '.editbox')
@@ -151,6 +154,16 @@ module CompanySite
             level: battery_level_elements[product_index(product)].text.strip.to_i,
             title: battery_title_elements[product_index(product)].attribute('title'),
           }
+        end
+
+        def set_product_main(product)
+          browser
+            .action
+            .move_to(products_elements[product_index(product)].element)
+            .perform
+
+          product_main_icon_elements[product_index(product)].click
+          wait_saving
         end
 
         # @return nothing

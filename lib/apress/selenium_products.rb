@@ -24,7 +24,7 @@ require "#{gem_directory}/lib/pages/company_site/eti/popups/rubrics_binding_popu
 require "#{gem_directory}/lib/pages/company_site/eti/popups/traits_popup"
 require "#{gem_directory}/lib/pages/company_site/eti/popups/wholesale_price_popup"
 require "#{gem_directory}/lib/pages/company_site/eti/popups/service_labels_popup"
-require "#{gem_directory}/lib/pages/company_site/eti/popups/setting_columns_popup.rb"
+require "#{gem_directory}/lib/pages/company_site/eti/popups/setting_columns_popup"
 
 # Мини-ЕТИ
 require "#{gem_directory}/lib/pages/company_site/mini_eti/mini_eti"
@@ -34,4 +34,6 @@ require "#{gem_directory}/lib/pages/company_site/mini_eti/pagination"
 require "#{gem_directory}/lib/pages/company_site/product_creation_page"
 
 # Страница Импорта YML
-require "#{gem_directory}/lib/pages/company_site/import_yml_page.rb"
+require "#{gem_directory}/lib/pages/company_site/kirby/import/import_yml_page"
+require "#{gem_directory}/lib/pages/company_site/kirby/import/upload_tab_page"
+require "#{gem_directory}/lib/pages/company_site/kirby/import/settings_tab_page"

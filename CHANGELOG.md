@@ -1,6 +1,10 @@
+# v1.2.5
+
+* 2026-05-25 [67b8b86](../../commit/67b8b86) - __(Fort-Nox)__ Release 1.2.5 
+* 2026-05-19 [799598f](../../commit/799598f) - __(Fort-Nox)__ feat(selenium): rewrite import yml page, add new checks and correct old 
+
 # v1.2.4
 
-* 2026-01-30 [3742a43](../../commit/3742a43) - __(Fort-Nox)__ Release 1.2.4 
 * 2026-01-30 [1f19f60](../../commit/1f19f60) - __(Fort-Nox)__ fix(selenium): fix service_lables_spec and add setting columns method 
 
 # v1.2.3

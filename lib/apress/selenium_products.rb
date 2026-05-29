@@ -35,5 +35,10 @@ require "#{gem_directory}/lib/pages/company_site/product_creation_page"
 
 # Страница Импорта YML
 require "#{gem_directory}/lib/pages/company_site/kirby/import/import_yml_page"
-require "#{gem_directory}/lib/pages/company_site/kirby/import/upload_tab_page"
-require "#{gem_directory}/lib/pages/company_site/kirby/import/settings_tab_page"
+require "#{gem_directory}/lib/pages/company_site/kirby/import/yml_upload_tab_page"
+require "#{gem_directory}/lib/pages/company_site/kirby/import/yml_settings_tab_page"
+
+# Страница Экспорта YML, XLS
+require "#{gem_directory}/lib/pages/company_site/kirby/export/export_page"
+require "#{gem_directory}/lib/pages/company_site/kirby/export/yml_tab_page"
+require "#{gem_directory}/lib/pages/company_site/kirby/export/xls_tab_page"

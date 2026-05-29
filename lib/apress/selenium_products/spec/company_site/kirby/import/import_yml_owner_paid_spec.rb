@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'apress/selenium_products/spec/shared/page_common_examples'
-require 'apress/selenium_products/spec/shared/upload_tab_examples'
-require 'apress/selenium_products/spec/shared/settings_tab_examples'
+require 'apress/selenium_products/spec/shared/import/import_yml_page_common_examples'
+require 'apress/selenium_products/spec/shared/import/yml_upload_tab_examples'
+require 'apress/selenium_products/spec/shared/import/yml_settings_tab_examples'
 
 describe 'Импорт YML: проверка доступа страницы владельцу (платный пакет)',
-  feature: 'Импорт YML: проверка доступа страницы владельцу (платный пакет)' do
+         feature: 'Импорт YML: проверка доступа страницы владельцу (платный пакет)' do
   before(:all) do
     @import_yml_page = CompanySite::ImportYMLPage.new
     @upload_tab      = CompanySite::ImportYMLPage::UploadTab.new

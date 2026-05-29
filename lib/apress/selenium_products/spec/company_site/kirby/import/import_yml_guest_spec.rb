@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'apress/selenium_products/spec/shared/page_common_examples'
+require 'apress/selenium_products/spec/shared/import/import_yml_page_common_examples'
 
 describe 'Импорт YML: проверка доступа страницы пользователям',
-  feature: 'Импорт YML: проверка доступа страницы пользователям' do
+         feature: 'Импорт YML: проверка доступа страницы пользователям' do
   before(:all) do
     @import_yml_page = CompanySite::ImportYMLPage.new
     @upload_tab      = CompanySite::ImportYMLPage::UploadTab.new

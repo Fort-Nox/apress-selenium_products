@@ -80,13 +80,27 @@ module CompanySite
     text_area(:description_of_photo, css: '.image-block__textarea .aui-admin-textarea__field')
     div(:image_error, css: 'div.image-loader__error-text')
 
-    # Блок меток на товар
+    # Блок Группа товаров
+    elements(:groups_tree, css: '.groups__selector-block .aui-admin-rubric-select__title')
+    
+    # Блок Метки на товар
+    div(:marketing_labels_title, xpath: '//div[normalize-space()="Метки на товар"]')
+    div(:marketing_labels_hint, xpath:
+        '//div[normalize-space()="Метки на товар"]/following-sibling::span[@class="tooltip"]')
+    radio_button(:portal_and_site, css: '[value="portalAndSite"]')
+    radio_button(:only_site, css: '[value="site"]')
+    #   Для портала и сайта    
     checkbox(:free_delivery, css: '#marketing-labels-0')
     checkbox(:credit, css: '#marketing-labels-4')
     checkbox(:product_sertificate, css: '#marketing-labels-9')
-
-    # Блок Группа товаров
-    elements(:groups_tree, css: '.groups__selector-block .aui-admin-rubric-select__title')
+    #   Только для сайта
+    button(:add_marketing_label, css: 'button.marketing-labels__add-label')
+    button(:delete_marketing_label, css: 'button.marketing-labels__icon-trash')
+    text_field(:marketing_label_name, css: '.label-name')
+    button(:today_date, css: 'button.react-calendar__tile--active')
+    div(:no_expiration_date, css: 'div.without-action-time_show')
+    div(:notification, css: 'div.marketing-labels__notification')
+    button(:restore_marketing_label, css: 'button.marketing-labels-notification__button')
 
     # Блок Документы
     button(:load_file, xpath: '//div[@class="document-loader__block"]/../..//input[@type="file"]')
@@ -99,6 +113,18 @@ module CompanySite
 
     # Минимальный размер заказа (только для ПЦ)
     text_area(:min_qty_input, css: '.min-quantity .aui-admin-number-input__field')
+
+    # Блок Примечание
+    div(:note_title, xpath: '//div[normalize-space()="Примечание"]')
+    div(:note_hint, xpath:
+        '//div[normalize-space()="Примечание"]/following-sibling::span[@class="tooltip"]')
+    text_area(:user_note, css: '.user-note__field')
+    div(:symbols_counter, css: '.user-note .aui-admin-textarea__counter')
+
+    # Блок Служебные метки
+    div(:service_labels_title, xpath: '//div[normalize-space()="Служебные метки"]')
+    div(:service_labels_hint, xpath:
+        '//div[normalize-space()="Служебные метки"]/following-sibling::span[@class="tooltip"]')
 
     # Кнопка сохранения
     button(:save, css: '.aui-admin-button_submit')

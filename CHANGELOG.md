@@ -1,6 +1,10 @@
+# v1.3.0
+
+* 2026-06-15 [9b69236](../../commit/9b69236) - __(Fort-Nox)__ Release 1.3.0 
+* 2026-05-29 [46ba08c](../../commit/46ba08c) - __(Fort-Nox)__ feat(selenium): add checks for export yml page 
+
 # v1.2.5
 
-* 2026-05-25 [67b8b86](../../commit/67b8b86) - __(Fort-Nox)__ Release 1.2.5 
 * 2026-05-19 [799598f](../../commit/799598f) - __(Fort-Nox)__ feat(selenium): rewrite import yml page, add new checks and correct old 
 
 # v1.2.4

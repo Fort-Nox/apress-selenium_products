@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'testЕТИ' do
+describe 'ЕТИ' do
   before(:all) do
     @cs_eti_table          = CompanySite::ETI::Table.new
     @cs_eti_table_products = CompanySite::ETI::Table::Products.new
@@ -36,7 +36,7 @@ describe 'testЕТИ' do
       end
     end
 
-    context 'когда изменяем служебную метку' do
+    fcontext 'когда изменяем служебную метку' do
       before do
         @product = @cs_eti_table_products.product(name: @name)
         @service_labels = 'long_desc'

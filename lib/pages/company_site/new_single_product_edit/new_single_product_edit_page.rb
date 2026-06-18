@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module CompanySite
-  class ProductCreationPage < Page
+  class NewSingleProductEditPage < Page
+    include Constants
+
     div(:page_title, css: '.company-admin-content-wrap .product')
 
     # Блок Основная информация (Название товара, Артикул, Наличие)
@@ -94,15 +96,25 @@ module CompanySite
     checkbox(:credit, css: '#marketing-labels-4')
     checkbox(:product_sertificate, css: '#marketing-labels-9')
     #   Только для сайта
+    checkbox(:novelty, css: '#marketing-labels-0')
+    checkbox(:product_month, css: '#marketing-labels-1')
+    checkbox(:bestseller, css: '#marketing-labels-2')
+    checkbox(:best_price, css: '#marketing-labels-3')
+    checkbox(:custom_label, css: '#marketing-labels-4')
+    #   Для создания, удаления кастомной метки
     button(:add_marketing_label, css: 'button.marketing-labels__add-label')
     button(:delete_marketing_label, css: 'button.marketing-labels__icon-trash')
     text_field(:marketing_label_name, css: '.label-name')
+    div(:calendar, css: 'div.calendar-termless')
     button(:today_date, css: 'button.react-calendar__tile--active')
     div(:no_expiration_date, css: 'div.without-action-time_show')
     div(:notification, css: 'div.marketing-labels__notification')
     button(:restore_marketing_label, css: 'button.marketing-labels-notification__button')
 
     # Блок Документы
+    div(:documents_title, xpath: '//div[normalize-space()="Документы"]')
+    div(:documents_hint, xpath:
+        '//div[normalize-space()="Документы"]/following-sibling::span[@class="tooltip"]')
     button(:load_file, xpath: '//div[@class="document-loader__block"]/../..//input[@type="file"]')
     elements(:docs, css: '.documents__reorder-block .document-block')
 
@@ -125,6 +137,10 @@ module CompanySite
     div(:service_labels_title, xpath: '//div[normalize-space()="Служебные метки"]')
     div(:service_labels_hint, xpath:
         '//div[normalize-space()="Служебные метки"]/following-sibling::span[@class="tooltip"]')
+
+    SERVICE_LABELS.each do |label|
+      checkbox("#{label}", id: "service-labels-#{label}")
+    end
 
     # Кнопка сохранения
     button(:save, css: '.aui-admin-button_submit')
@@ -336,6 +352,16 @@ module CompanySite
       end
     end
 
+    # Устанавливает служебные метки: включает переданные, остальные снимает.
+    # service_labels — строка, символ или массив, например: :premium, 'new_unic', %w[premium new_unic]
+    def set_service_labels(service_labels)
+      service_labels = Array(service_labels).map(&:to_s)
+
+      SERVICE_LABELS.each do |label|
+        service_labels.include?(label) ? send("check_#{label}") : send("uncheck_#{label}")
+      end
+    end
+    
     # Очистка ТОЛЬКО текстовых строк
     # Название строк которые нужно очистить передаются хэшом в параметр
     #   Например, в спеке объявляется переменная

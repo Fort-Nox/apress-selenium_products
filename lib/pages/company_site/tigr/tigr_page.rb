@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module CompanySite
-  class TigrPage < Page
+  class TIGRPage < Page
     button(:add_new_group, css: '.button-add')
     div(:group_description, xpath: '//*[@class="e-table-cell-placeholder"][contains(text(),"Заполнить описание")]')
     span(:last_created_group, css: '.e-table-cell-text')

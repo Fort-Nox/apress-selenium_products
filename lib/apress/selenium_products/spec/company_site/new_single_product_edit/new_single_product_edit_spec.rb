@@ -2,10 +2,10 @@
 
 require 'spec_helper'
 
-describe 'Новая форма создания товара', feature: 'Создание товара' do
+describe 'Новая единичное редактирование', feature: 'Создание товара' do
   before(:all) do
     @product_page          = ProductPage.new
-    @product_creation_page = CompanySite::ProductCreationPage.new
+    @product_creation_page = CompanySite::NewSingleProductEdit.new
 
     log_in_as(:admin)
   end
